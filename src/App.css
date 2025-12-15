@@ -1,0 +1,124 @@
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: #e0e0e0;
+  background-color: #0f0f11; /* Deep dark background */
+}
+
+/* Center everything beautifully */
+.container {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #27272a;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+}
+
+/* The Live Badge */
+.status-badge {
+  background-color: rgba(220, 38, 38, 0.2);
+  color: #f87171;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* The Transcript Box */
+.transcript-box {
+  background-color: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 200px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #fafafa;
+  white-space: pre-wrap;
+  transition: border-color 0.2s;
+}
+
+.transcript-box:focus-within {
+  border-color: #535bf2;
+}
+
+.placeholder {
+  color: #52525b;
+  font-style: italic;
+}
+
+/* Button Group */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* Record Button */
+.btn-record {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn-record:hover {
+  background-color: #e4e4e7;
+  transform: translateY(-1px);
+}
+
+.btn-record.recording {
+  background-color: #dc2626;
+  color: white;
+}
+.btn-record.recording:hover {
+  background-color: #b91c1c;
+}
+
+/* Insert Button */
+.btn-insert {
+  background-color: #27272a;
+  color: #a1a1aa;
+}
+
+.btn-insert:hover {
+  background-color: #3f3f46;
+  color: white;
+  transform: translateY(-1px);
+}
