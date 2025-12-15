@@ -77,21 +77,25 @@ The app allows users to **record their voice**, see **live transcription**, and 
 ## 🧠 Architecture & Separation of Concerns
 
 wispr-flow-clone/
-├── src/                  # React frontend
-│   ├── hooks/
-│   ├── services/
-│   ├── App.tsx
-│   └── main.tsx
+├── src/ # Frontend (React)
+│ ├── hooks/ # Audio & Deepgram logic
+│ ├── services/ # API integrations
+│ ├── components/ # UI components
+│ └── App.tsx
 │
-├── src-tauri/             # Native desktop backend
-│   ├── src/
-│   │   ├── main.rs
-│   │   └── lib.rs
-│   ├── capabilities/
-│   │   └── default.json
-│   ├── Cargo.toml
-│   └── tauri.conf.json
+├── src-tauri/ # Native Desktop Layer (Rust)
+│ ├── src/
+│ │ ├── main.rs # Tauri entry point
+│ │ └── lib.rs
+│ ├── capabilities/ # Permission configuration
+│ ├── Cargo.toml # Rust dependencies
+│ └── tauri.conf.json
+│
+├── package.json # Frontend dependencies
+└── README.md
 
+yaml
+Copy code
 
 ### Why `src-tauri/` exists
 Tauri splits responsibilities:
@@ -148,37 +152,6 @@ These choices prioritize **stability and clarity** over complexity.
 - Rust (stable)
 - Tauri CLI
 
-```bash
-## ❓ Why `src-tauri` Exists
-
-Tauri apps are **two applications in one**:
-
-- **Frontend (React)** → UI & browser APIs
-- **Backend (Rust)** → Native OS capabilities
-
-`src-tauri` is the **native shell** that:
-- opens a desktop window
-- manages permissions
-- exposes clipboard / system APIs securely
-
-This separation is intentional and improves:
-- performance
-- security
-- bundle size
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|-----|-----------|
-| UI | React + TypeScript |
-| Desktop Shell | Tauri (Rust) |
-| Audio | Web Audio API (PCM streaming) |
-| AI | Deepgram Real-Time WebSocket API |
-| Clipboard | Tauri Clipboard Plugin |
-
----
 
 ## ▶️ How to Run Locally
 
@@ -207,7 +180,27 @@ VITE_DEEPGRAM_API_KEY=your_deepgram_api_key
 bash
 Copy code
 npm run tauri dev
-THIS WILL:
+This will:
+
+start Vite (frontend)
+
+compile Rust backend
+
+open the desktop window
+```bash
+
+OR
+
+npm install -g @tauri-apps/cli
+2️⃣ Install Dependencies
+bash
+Copy code
+npm install
+3️⃣ Run the App (Desktop)
+bash
+Copy code
+npm run tauri dev
+This will:
 
 Start the Vite dev server
 
