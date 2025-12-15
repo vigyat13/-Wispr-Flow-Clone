@@ -149,16 +149,65 @@ These choices prioritize **stability and clarity** over complexity.
 - Tauri CLI
 
 ```bash
-npm install -g @tauri-apps/cli
-2️⃣ Install Dependencies
-bash
-Copy code
+## ❓ Why `src-tauri` Exists
+
+Tauri apps are **two applications in one**:
+
+- **Frontend (React)** → UI & browser APIs
+- **Backend (Rust)** → Native OS capabilities
+
+`src-tauri` is the **native shell** that:
+- opens a desktop window
+- manages permissions
+- exposes clipboard / system APIs securely
+
+This separation is intentional and improves:
+- performance
+- security
+- bundle size
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-----|-----------|
+| UI | React + TypeScript |
+| Desktop Shell | Tauri (Rust) |
+| Audio | Web Audio API (PCM streaming) |
+| AI | Deepgram Real-Time WebSocket API |
+| Clipboard | Tauri Clipboard Plugin |
+
+---
+
+## ▶️ How to Run Locally
+
+### 1️⃣ Prerequisites
+
+- Node.js ≥ 18
+- Rust ≥ 1.77
+- Windows / macOS / Linux
+- Deepgram API Key
+
+---
+
+### 2️⃣ Clone & Install
+
+```bash
+git clone <your-repo-url>
+cd wispr-flow-clone
 npm install
-3️⃣ Run the App (Desktop)
+3️⃣ Set Environment Variable
+Create .env in project root:
+
+env
+Copy code
+VITE_DEEPGRAM_API_KEY=your_deepgram_api_key
+4️⃣ Run the App
 bash
 Copy code
 npm run tauri dev
-This will:
+THIS WILL:
 
 Start the Vite dev server
 
