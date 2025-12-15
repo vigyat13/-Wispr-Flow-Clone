@@ -77,25 +77,21 @@ The app allows users to **record their voice**, see **live transcription**, and 
 ## 🧠 Architecture & Separation of Concerns
 
 wispr-flow-clone/
-├── src/ # Frontend (React)
-│ ├── hooks/ # Audio & Deepgram logic
-│ ├── services/ # API integrations
-│ ├── components/ # UI components
-│ └── App.tsx
+├── src/                  # React frontend
+│   ├── hooks/
+│   ├── services/
+│   ├── App.tsx
+│   └── main.tsx
 │
-├── src-tauri/ # Native Desktop Layer (Rust)
-│ ├── src/
-│ │ ├── main.rs # Tauri entry point
-│ │ └── lib.rs
-│ ├── capabilities/ # Permission configuration
-│ ├── Cargo.toml # Rust dependencies
-│ └── tauri.conf.json
-│
-├── package.json # Frontend dependencies
-└── README.md
+├── src-tauri/             # Native desktop backend
+│   ├── src/
+│   │   ├── main.rs
+│   │   └── lib.rs
+│   ├── capabilities/
+│   │   └── default.json
+│   ├── Cargo.toml
+│   └── tauri.conf.json
 
-yaml
-Copy code
 
 ### Why `src-tauri/` exists
 Tauri splits responsibilities:
